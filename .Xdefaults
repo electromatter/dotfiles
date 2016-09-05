@@ -7,6 +7,7 @@ xterm*vt100*translations:       #override               \n\
         Shift Ctrl <Key> V: insert-selection(CLIPBOARD) \n\
         Shift Ctrl <Key> N: spawn-new-terminal()        \n
 xterm*selectToClipboard: true
+xterm*metaSendsEscape: true
 
 xterm*background:       ivory
 !black
