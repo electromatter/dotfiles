@@ -1,4 +1,3 @@
-#ADD THIS TO BASHRC
 set -o vi
 
 VISUAL="/usr/bin/vim"
