@@ -1,9 +1,16 @@
 set nu
 
 set autoindent
-set noexpandtab
-set tabstop=8
-set shiftwidth=8
+set smartindent
+#set noexpandtab
+#set tabstop=8
+#set shiftwidth=8
+
+set t_Co=256
+
+set spell spelllang=en
+
+filetype plugin indent on
 
 syntax on
 
