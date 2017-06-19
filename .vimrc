@@ -2,9 +2,9 @@ set nu
 
 set autoindent
 set smartindent
-#set noexpandtab
-#set tabstop=8
-#set shiftwidth=8
+"set noexpandtab
+"set tabstop=8
+"set shiftwidth=8
 
 set t_Co=256
 
