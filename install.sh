@@ -35,7 +35,6 @@ install_link() {
 		TARGET="$2"
 	fi
 
-
 	if [ -e "$TARGET" ]; then
 		cmp "$SOURCE" "$TARGET" > /dev/null && return 0
 		echo "$TARGET exists"
@@ -48,16 +47,24 @@ install_link() {
 }
 
 install_profile() {
-	if [ -e "$HOME/.profile" ] && cmp profile "$HOME/.profile" > /dev/null; then
-		return 0
-	elif [ -f "$HOME/.profile" ]; then
-		confirm "$HOME/.profile exists. Merge (Y/n)? " Y || return 1
-		mv "$HOME/.profile" "$HOME/.profile.dist"
-	elif [ -L "$HOME/.profile" ]; then
-		confirm "$HOME/.profile exists and is a link. Override (n/N)? " N || return 1
-		rm "$HOME/.profile"
+	SOURCE="$(pwd)/$1"
+	TARGET="$HOME/.$1"
+
+	if [ -n "$2" ]; then
+		# Target was specified, override default
+		TARGET="$2"
 	fi
-	install_link profile
+
+	if [ -e "TARGET" ] && cmp $SOURCE "$TARGET" > /dev/null; then
+		return 0
+	elif [ -f "$TARGET" ]; then
+		confirm "$TARGET exists. Merge (Y/n)? " Y || return 1
+		mv "$TARGET" "$TARGET.dist"
+	elif [ -L "$TARGET" ]; then
+		confirm "$TARGET exists and is a link. Override (n/N)? " N || return 1
+		rm "$TARGET"
+	fi
+	install_link "$SOURCE" "$TARGET"
 }
 
 setup_git() {
@@ -94,6 +101,6 @@ mkdir -p "$HOME/.gnupg"
 install_link gpg-agent.conf "$HOME/.gnupg/gpg-agent.conf"
 
 # profile
-install_profile
+install_profile bashrc
 
 echo "All done!"

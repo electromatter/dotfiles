@@ -1,6 +1,6 @@
 # Try the distributions profile, if it exists
-if [ -e "$HOME/.profile.dist" ]; then
-	. "$HOME/.profile.dist"
+if [ -e "$HOME/.bashrc.dist" ]; then
+	. "$HOME/.bashrc.dist"
 fi
 
 # Use VIM
