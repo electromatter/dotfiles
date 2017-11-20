@@ -1,1 +1,8 @@
-*.swp
+# GPG Secrets
+gnupg/private-keys-*
+gnupg/secring.gpg
+gnupg/S.*
+gnupg/.*
+
+# Vim Swap files
+.*.sw*

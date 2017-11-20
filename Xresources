@@ -1,6 +1,6 @@
-//xterm*reverseVideo: on
+!xterm*reverseVideo: on
 xterm*locale: true
-xterm*faceName: DeJaVu Mono//:size=14
+xterm*faceName: DeJaVu Sans Mono:size=9
 xterm*vt100*translations:       #override               \n\
         Shift <Key> Delete: insert-selection(SELECT)    \n\
         Shift Ctrl <Key> C: select-end(CLIPBOARD)       \n\
@@ -17,14 +17,14 @@ xterm*color8:         #666666
 xterm*color1:         #AE4747
 xterm*color9:         #EE6363
 !green
-xterm*color2:         #85A642//#8FB347//#41FA41 //#556B2F
-xterm*color10:        #AED957//#9ACD32
+xterm*color2:         #85A642
+xterm*color10:        #AED957
 !brown/yellow
 xterm*color3:         #DAA520
 xterm*color11:        #FFC125
 !blue
-xterm*color4:         #3EA2FA//#6F99B4
-xterm*color12:        #87A2FA//#7C96B0
+xterm*color4:         #3EA2FA
+xterm*color12:        #87A2FA
 !magenta
 xterm*color5:         #8B7B8B
 xterm*color13:        #D8BFD8

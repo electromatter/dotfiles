@@ -1,0 +1,6 @@
+# Vim swap files
+.*.sw*
+
+# Python files
+*.py[cod]
+__pycache__
