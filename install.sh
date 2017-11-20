@@ -55,10 +55,10 @@ install_profile() {
 		TARGET="$2"
 	fi
 
-	if [ -e "TARGET" ] && cmp $SOURCE "$TARGET" > /dev/null; then
+	if [ -e "$TARGET" ] && cmp "$SOURCE" "$TARGET" > /dev/null; then
 		return 0
 	elif [ -f "$TARGET" ]; then
-		confirm "$TARGET exists. Merge (Y/n)? " Y || return 1
+		confirm "$TARGET exists. Merge (y/N)? " N || return 1
 		mv "$TARGET" "$TARGET.dist"
 	elif [ -L "$TARGET" ]; then
 		confirm "$TARGET exists and is a link. Override (y/N)? " N || return 1
@@ -82,25 +82,41 @@ setup_git() {
 	fi
 }
 
-# Simple files
-install_link inputrc
-install_link tmux.conf
-install_link vimrc
-install_link Xresources
-install_link xmodmap
+setup_libinput() {
+	install_link inputrc
+}
 
-# gitconfig
+setup_tmux() {
+	install_link tmux.conf
+}
+
+setup_x11() {
+	install_link Xresources
+	install_link xmodmap
+}
+
+setup_vim() {
+	install_link vimrc
+	mkdir -p "$HOME/.vim/plugin"
+	install_link sensible.vim "$HOME/.vim/plugin/sensible.vim"
+}
+
+setup_gpg() {
+	confirm "Setup GPG Agent (y/N)? " N || return 0
+	mkdir -p "$HOME/.gnupg"
+	install_link gpg-agent.conf "$HOME/.gnupg/gpg-agent.conf"
+}
+
+setup_bash() {
+	install_profile bashrc
+}
+
+# Run the setup
 setup_git
-
-# Vim sensible
-mkdir -p "$HOME/.vim/plugin"
-install_link sensible.vim "$HOME/.vim/plugin/sensible.vim"
-
-# gpg-agent
-mkdir -p "$HOME/.gnupg"
-install_link gpg-agent.conf "$HOME/.gnupg/gpg-agent.conf"
-
-# profile
-install_profile bashrc
-
-echo "All done!"
+setup_libinput
+setup_tmux
+setup_x11
+setup_vim
+setup_gpg
+setup_bash
+echo "All Done!"
