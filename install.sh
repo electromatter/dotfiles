@@ -64,7 +64,7 @@ install_profile() {
 		confirm "$TARGET exists and is a link. Override (n/N)? " N || return 1
 		rm "$TARGET"
 	fi
-	install_link "$SOURCE" "$TARGET"
+	install_link "$1" "$TARGET"
 }
 
 setup_git() {

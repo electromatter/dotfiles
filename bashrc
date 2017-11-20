@@ -9,6 +9,8 @@ if [ -n "$VIM" ]; then
 	set -o vi
 	VISUAL="$VIM"
 	EDITOR="$VIM"
+	export VISUAL
+	export EDITOR
 fi
 unset VIM
 
