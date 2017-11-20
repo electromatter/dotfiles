@@ -1,6 +1,6 @@
 # Try the distributions profile, if it exists
 if [ -e "$HOME/.profile.dist" ]; then
-	source "$HOME/.profile.dist"
+	. "$HOME/.profile.dist"
 fi
 
 # Use VIM
