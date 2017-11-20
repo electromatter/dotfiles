@@ -102,6 +102,7 @@ setup_vim() {
 }
 
 setup_gpg() {
+	[ -e "$HOME/.gnupg/gpg-agent.conf" ] && cmp gpg-agent.conf "$HOME/.gnupg/gpg-agent.conf" && return 0
 	confirm "Setup GPG Agent (y/N)? " N || return 0
 	mkdir -p "$HOME/.gnupg"
 	install_link gpg-agent.conf "$HOME/.gnupg/gpg-agent.conf"
