@@ -80,6 +80,7 @@ install_link inputrc
 install_link tmux.conf
 install_link vimrc
 install_link Xresources
+install_link xmodmap
 
 # gitconfig
 setup_git
