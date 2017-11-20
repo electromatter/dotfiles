@@ -61,7 +61,7 @@ install_profile() {
 		confirm "$TARGET exists. Merge (Y/n)? " Y || return 1
 		mv "$TARGET" "$TARGET.dist"
 	elif [ -L "$TARGET" ]; then
-		confirm "$TARGET exists and is a link. Override (n/N)? " N || return 1
+		confirm "$TARGET exists and is a link. Override (y/N)? " N || return 1
 		rm "$TARGET"
 	fi
 	install_link "$1" "$TARGET"
