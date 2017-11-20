@@ -4,12 +4,18 @@ if [ -e "$HOME/.profile.dist" ]; then
 fi
 
 # Use VIM
-set -o vi
-VISUAL="/usr/bin/vim"
-EDITOR="/usr/bin/vim"
+VIM=$(which VIM)
+if [ -n "$VIM" ]; then
+	set -o vi
+	VISUAL="$VIM"
+	EDITOR="$VIM"
+fi
+unset VIM
 
 # Add $HOME/.bin to path
-PATH="$HOME/.bin:$PATH"
+if [ -e "$HOME/.bin" ]; then
+	PATH="$HOME/.bin:$PATH"
+fi
 
 # gnupg ssh agent
 SSH_AUTH_SOCK="$HOME/.gnupg/S.gpg-agent.ssh"

@@ -85,6 +85,10 @@ install_link xmodmap
 # gitconfig
 setup_git
 
+# Vim sensible
+mkdir -p "$HOME/.vim/plugin"
+install_link sensible.vim "$HOME/.vim/plugin/sensible.vim"
+
 # gpg-agent
 mkdir -p "$HOME/.gnupg"
 install_link gpg-agent.conf "$HOME/.gnupg/gpg-agent.conf"
