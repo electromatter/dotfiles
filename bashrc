@@ -4,7 +4,7 @@ if [ -e "$HOME/.bashrc.dist" ]; then
 fi
 
 # Use VIM
-VIM=$(which VIM)
+VIM=$(which vim)
 if [ -n "$VIM" ]; then
 	set -o vi
 	VISUAL="$VIM"
