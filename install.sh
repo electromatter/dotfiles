@@ -75,9 +75,9 @@ setup_git() {
 			read -r -p "Git Name: " name
 			git config --global user.name "$name"
 		fi
-		if [ -n $(git config --get user.name) ]; then
+		if [ -n $(git config --get user.email) ]; then
 			read -r -p "Git Email: " email
-			git config --global user.name "$email"
+			git config --global user.email "$email"
 		fi
 	fi
 }
