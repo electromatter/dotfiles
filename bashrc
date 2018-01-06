@@ -20,5 +20,7 @@ if [ -e "$HOME/.bin" ]; then
 fi
 
 # gnupg ssh agent
-SSH_AUTH_SOCK="$HOME/.gnupg/S.gpg-agent.ssh"
-export SSH_AUTH_SOCK
+if [ -z "$SSH_AUTH_SOCK" ]; then
+	SSH_AUTH_SOCK="$HOME/.gnupg/S.gpg-agent.ssh"
+	export SSH_AUTH_SOCK
+fi
