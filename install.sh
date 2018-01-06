@@ -71,11 +71,11 @@ setup_git() {
 	install_link gitignore
 	if ! which git > /dev/null; then
 		git config --global core.excludesfile "$HOME/.gitignore"
-		if [ -n $(git config --get user.name) ]; then
+		if [ -n "$(git config --get user.name)" ]; then
 			read -r -p "Git Name: " name
 			git config --global user.name "$name"
 		fi
-		if [ -n $(git config --get user.email) ]; then
+		if [ -n "$(git config --get user.email)" ]; then
 			read -r -p "Git Email: " email
 			git config --global user.email "$email"
 		fi
@@ -106,6 +106,9 @@ setup_gpg() {
 	confirm "Setup GPG Agent (y/N)? " N || return 0
 	mkdir -p "$HOME/.gnupg"
 	install_link gpg-agent.conf "$HOME/.gnupg/gpg-agent.conf"
+	install_link gpg.conf "$HOME/.gnupg/gpg.conf"
+	confirm "Download gpg key <electromatter@gmail.com> (0x64AC6DABFB677553) (y/N)? " N || return 0
+	wget -O - https://pgp.key-server.io/download/0x64AC6DABFB677553 -o /dev/null | gpg2 --import
 }
 
 setup_bash() {
