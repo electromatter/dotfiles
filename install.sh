@@ -71,11 +71,11 @@ setup_git() {
 	install_link gitignore
 	if ! which git > /dev/null; then
 		git config --global core.excludesfile "$HOME/.gitignore"
-		if [ -n "$(git config --get user.name)" ]; then
+		if [ -z "$(git config --get user.name)" ]; then
 			read -r -p "Git Name: " name
 			git config --global user.name "$name"
 		fi
-		if [ -n "$(git config --get user.email)" ]; then
+		if [ -z "$(git config --get user.email)" ]; then
 			read -r -p "Git Email: " email
 			git config --global user.email "$email"
 		fi
