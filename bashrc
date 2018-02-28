@@ -14,6 +14,9 @@ if [ -n "$VIM" ]; then
 fi
 unset VIM
 
+alias ls="ls --color=auto"
+alias grep="grep --color=auto"
+
 # Add $HOME/.bin to path
 if [ -e "$HOME/.bin" ]; then
 	PATH="$HOME/.bin:$PATH"
@@ -21,6 +24,6 @@ fi
 
 # gnupg ssh agent
 if [ -z "$SSH_AUTH_SOCK" ]; then
-	SSH_AUTH_SOCK="$HOME/.gnupg/S.gpg-agent.ssh"
+	SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh"
 	export SSH_AUTH_SOCK
 fi
