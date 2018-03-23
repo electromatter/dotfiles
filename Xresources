@@ -11,6 +11,7 @@ xterm*metaSendsEscape: true
 xterm*termName: xterm-256color
 
 xterm*background:       ivory
+xterm*foreground:	black
 !black
 xterm*color0:         #353535
 xterm*color8:         #666666
