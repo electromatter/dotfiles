@@ -10,7 +10,9 @@ xterm*selectToClipboard: true
 xterm*metaSendsEscape: true
 xterm*termName: xterm-256color
 
-xterm*background:       ivory
+!ivory background and black text
+xterm*background:     #fffff0
+xterm*foreground:     #353535
 !black
 xterm*color0:         #353535
 xterm*color8:         #666666
