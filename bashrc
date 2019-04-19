@@ -22,6 +22,11 @@ if [ -e "$HOME/.bin" ]; then
 	PATH="$HOME/.bin:$PATH"
 fi
 
+# Add $HOME/local/.bin to path
+if [ -e "$HOME/.local/.bin" ]; then
+	PATH="$HOME/.local/.bin:$PATH"
+fi
+
 # gnupg ssh agent
 if [ -z "$SSH_AUTH_SOCK" ]; then
 	SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh"
