@@ -105,6 +105,7 @@ setup_gpg() {
 	[ -e "$HOME/.gnupg/gpg-agent.conf" ] && cmp gpg-agent.conf "$HOME/.gnupg/gpg-agent.conf" && return 0
 	confirm "Setup GPG Agent (y/N)? " N || return 0
 	mkdir -p "$HOME/.gnupg"
+	chmod 700 "$HOME/.gnupg"
 	install_link gpg-agent.conf "$HOME/.gnupg/gpg-agent.conf"
 	install_link gpg.conf "$HOME/.gnupg/gpg.conf"
 	confirm "Download gpg key <electromatter@gmail.com> (0x64AC6DABFB677553) (y/N)? " N || return 0
