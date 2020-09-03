@@ -108,7 +108,18 @@ setup_gpg() {
 	install_link gpg-agent.conf "$HOME/.gnupg/gpg-agent.conf"
 	install_link gpg.conf "$HOME/.gnupg/gpg.conf"
 	confirm "Download gpg key <electromatter@gmail.com> (0x64AC6DABFB677553) (y/N)? " N || return 0
-	wget -O - https://pgp.key-server.io/download/0x64AC6DABFB677553 -o /dev/null | gpg2 --import
+	wget -O - https://electromatter.info/gpg/keyring.asc -o /dev/null | gpg2 --import || return 1
+	gpg2 --import-ownertrust <<EOF
+DE58318BB8911AC246AC939464AC6DABFB677553:6:
+EOF
+}
+
+setup_ssh() {
+	[ -e "$HOME/.ssh/authorized_keys" ] && return 0
+	confirm "Download ssh key (SHA256:4y62075/mSrmCwSbelsstXYphxFd3VHHetqtuNZBMQE) (y/N)? " N || return 0
+	mkdir -p "$HOME/.ssh"
+	chmod 700 "$HOME/.ssh"
+	wget -O - https://electromatter.info/gpg/authorized_keys -o /dev/null >> "$HOME/.ssh/authorized_keys"
 }
 
 setup_bash() {
@@ -122,5 +133,6 @@ setup_tmux
 setup_x11
 setup_vim
 setup_gpg
+setup_ssh
 setup_bash
 echo "All Done!"
